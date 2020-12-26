@@ -4,7 +4,11 @@ import Icons from "react-native-vector-icons/MaterialIcons";
 import styled from 'styled-components/native';
 import Colors from '../constants/colors';
 
-const HomeScreen = () => {
+interface Props {
+  navigation: any
+};
+
+const HomeScreen = ({ navigation }: Props) => {
   return (
     <>
       <HScreen>
@@ -27,19 +31,38 @@ const HomeScreen = () => {
         </SearchBoxContainer>
         <BusListContainer>
           <BusTile>
-            <BusNumber>
-              54F
-            </BusNumber>
             <View style={{
-              display: "flex",
-              flexDirection: "row"
+              display: 'flex',
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between"
             }} >
-              <CurrenLocation>
-                Adayar
-            </CurrenLocation>
-              <ETA>
-                25 mins
-            </ETA>
+              <View>
+                <Row style={{
+                  alignItems: "center"
+                }} >
+                  <BusNumber>
+                    54F
+                </BusNumber>
+                  <Icons name="location-on" size={16} color={Colors.blue} />
+                  <CurrenLocation>
+                    Adayar
+                    </CurrenLocation>
+                </Row>
+                <ETA>
+                  25 mins
+                    </ETA>
+              </View>
+              <Row>
+                <IconPressable onPress={() => {
+                  navigation.navigate("Stops")
+                }} >
+                  <Icons name="navigate-next" size={24} color={Colors.blue} />
+                </IconPressable>
+                <IconPressable>
+                  <Icons name="notifications-none" size={24} color={Colors.blue} />
+                </IconPressable>
+              </Row>
             </View>
           </BusTile>
         </BusListContainer>
@@ -117,18 +140,26 @@ paddingHorizontal : 16px;
 
 const BusNumber = styled.Text`
 fontSize : 20px;
+paddingRight: 8px;
 fontWeight : bold;
 `
 const CurrenLocation = styled.Text`
 fontSize : 16px;
-paddingRight : 8px;
 fontWeight : bold;
-
 `
 const ETA = styled.Text`
 fontSize : 16px;
 fontWeight : bold;
 opacity : 0.6;
+`
+
+const Row = styled.View`
+display : flex;
+flexDirection : row;
+`
+
+const IconPressable = styled.Pressable`
+paddingHorizontal : 4px;
 `
 
 export default HomeScreen;

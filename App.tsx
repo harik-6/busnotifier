@@ -6,6 +6,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/pages/home';
 import Colors from './src/constants/colors';
+import StopsScreen from './src/pages/stops';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -38,6 +39,16 @@ const App = () => {
                     backgroundColor: Colors.blue
                   }
                 }} name="Home" component={HomeScreen} />
+                <Screen options={{
+                  headerTintColor: "white",
+                  headerTitleStyle: {
+                    display: "none"
+                  },
+                  headerStyle: {
+                    elevation: 0,
+                    backgroundColor: Colors.blue
+                  }
+                }} name="Stops" component={StopsScreen} />
               </Navigator>
               : <Navigator>
                 <Screen name="Login" options={{
