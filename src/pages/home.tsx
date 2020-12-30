@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }: Props) => {
                 }} >
                   <Icons name="navigate-next" size={24} color={Colors.blue} />
                 </IconPressable>
-                <IconPressable>
+                <IconPressable >
                   <Icons name="notifications-none" size={24} color={Colors.blue} />
                 </IconPressable>
               </Row>
