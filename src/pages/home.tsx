@@ -65,6 +65,41 @@ const HomeScreen = ({ navigation }: Props) => {
               </Row>
             </View>
           </BusTile>
+          <BusTile>
+            <View style={{
+              display: 'flex',
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between"
+            }} >
+              <View>
+                <Row style={{
+                  alignItems: "center"
+                }} >
+                  <BusNumber>
+                    49M
+                </BusNumber>
+                  <Icons name="location-on" size={16} color={Colors.blue} />
+                  <CurrenLocation>
+                    Thiruvanmiyur
+                    </CurrenLocation>
+                </Row>
+                <ETA>
+                  43 mins
+                    </ETA>
+              </View>
+              <Row>
+                <IconPressable onPress={() => {
+                  navigation.navigate("Stops")
+                }} >
+                  <Icons name="navigate-next" size={24} color={Colors.blue} />
+                </IconPressable>
+                <IconPressable >
+                  <Icons name="notifications-none" size={24} color={Colors.blue} />
+                </IconPressable>
+              </Row>
+            </View>
+          </BusTile>
         </BusListContainer>
       </HScreen>
     </>

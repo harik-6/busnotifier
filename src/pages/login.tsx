@@ -18,6 +18,9 @@ const LoginScreen = ({ setUserLogin }: Props) => {
   return (
     <>
       <Screen>
+        <LoginText>
+          Intelligent Bus Notification App
+        </LoginText>
         {
           loading ? <ActivityIndicator size={50} color={Colors.blue} /> :
             <SignInButton onPress={_logInUser} activeOpacity={0.3} >
@@ -35,7 +38,12 @@ const Screen = styled.View`
   paddingBottom: 64px;
   justifyContent : flex-end;
 `
-
+const LoginText = styled.Text`
+  fontSize : 20px;
+  marginBottom : 480px;
+  marginLeft : 16px;
+  fontWeight : bold;
+`
 
 const SignInButton = styled.TouchableOpacity`
 borderRadius : 8px;
