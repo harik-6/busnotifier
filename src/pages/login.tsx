@@ -13,7 +13,7 @@ const LoginScreen = ({ setUserLogin }: Props) => {
     setLoading(true);
     setTimeout(() => {
       setUserLogin(true);
-    }, 3000);
+    }, 1000);
   }
   return (
     <>
@@ -24,7 +24,7 @@ const LoginScreen = ({ setUserLogin }: Props) => {
         {
           loading ? <ActivityIndicator size={50} color={Colors.blue} /> :
             <SignInButton onPress={_logInUser} activeOpacity={0.3} >
-              <SignInText>Log in</SignInText>
+              <SignInText>Go to Search</SignInText>
             </SignInButton>
         }
       </Screen>

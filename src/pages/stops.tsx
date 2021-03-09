@@ -4,20 +4,24 @@ import Icons from "react-native-vector-icons/MaterialIcons";
 import styled from 'styled-components/native';
 import Colors from '../constants/colors';
 
-const StopsScreen = () => {
+const StopsScreen = ({ route }) => {
+
+  const { source, destination, number, stops } = route.params.busstats;
+  // console.log(route.params);
+
   return <SSCreen>
     <TopContainer>
       <BusNumer>
-        54F
+        {number}
       </BusNumer>
       <Row>
         <SrcDestNames>
-          Thiruvanmiyur
-      </SrcDestNames>
+          {source}
+        </SrcDestNames>
         <Icons name="arrow-right-alt" size={36} color="#FFFFFF" />
         <SrcDestNames>
-          Koyambedu
-      </SrcDestNames>
+          {destination}
+        </SrcDestNames>
       </Row>
     </TopContainer>
     <BottomContainer>
@@ -25,32 +29,11 @@ const StopsScreen = () => {
         Bus stops
       </ButStop>
       <FlatList
-        data={[
-          {
-            name: "Shanthi theatre",
-            crossed: true,
-            crossedAt: "7:23 PM"
-          },
-          {
-            name: "Adayar",
-            crossed: true,
-            crossedAt: "7:45 PM"
-          },
-          {
-            name: "IIT",
-            crossed: false,
-            eta: "7:56 PM"
-          },
-          {
-            name: "Anna universirt",
-            crossed: false,
-            eta: "8:06 PM"
-          },
-        ]}
-        renderItem={({ item }) => <StopsContainer crossed={item.crossed} >
+        data={stops}
+        renderItem={({ item }) => <StopsContainer key={item.name} crossed={item.crossed} >
           {item.crossed ? <Icons size={18} name="radio-button-checked" color={Colors.green} />
             : <Icons size={18} name="radio-button-unchecked" color={Colors.green} />}
-          <Time>{item.crossed ? item.crossedAt : item.eta}</Time>
+          <Time>{item.crossed ? "Crossed" : item.eta}</Time>
           <StopName>{item.name}</StopName>
         </StopsContainer>}
       />
@@ -111,7 +94,7 @@ marginBottom : 8px;
 const StopsContainer = styled.View`
 display : flex;
 flexDirection : row;
-paddingVertical : 8px;
+paddingVertical : 16px;
 opacity :  ${props => props.crossed ? 0.4 : 1}
 `
 
